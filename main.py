@@ -8,9 +8,8 @@ warnings.filterwarnings('ignore', category=UserWarning)
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 
-class ConfirmedBreakoutEnsembleStrategyV3:
+class BreakoutEnsembleStrategy:
     def __init__(self):
-        # --- Competition-optimized configuration ---
         self.fast_ma_window = 20
         self.slow_ma_window = 50
         self.signal_confirmation_period = 3
@@ -197,7 +196,7 @@ class ConfirmedBreakoutEnsembleStrategyV3:
 
 
 # --- Global Instance ---
-strategy_instance = ConfirmedBreakoutEnsembleStrategyV3()
+strategy_instance = BreakoutEnsembleStrategy()
 
 
 def getMyPosition(prcSoFar: np.ndarray) -> np.ndarray:
