@@ -2,7 +2,7 @@
 
 import numpy as np
 import pandas as pd
-from teamName import getMyPosition as getPosition
+from alphaStack import getMyPosition as getPosition
 
 nInst = 0
 nt = 0
@@ -11,11 +11,11 @@ dlrPosLimit = 10000
 
 def loadPrices(fn):
     global nt, nInst
-    df=pd.read_csv(fn, sep='\s+', header=None, index_col=None)
+    df=pd.read_csv(fn, sep=r'\s+', header=None, index_col=None)
     (nt,nInst) = df.shape
     return (df.values).T
 
-pricesFile="./priceSlice_test.txt"
+pricesFile="./prices.txt"
 prcAll = loadPrices(pricesFile)
 print ("Loaded %d instruments for %d days" % (nInst, nt))
 
@@ -61,7 +61,6 @@ def calcPL(prcHist, numTestDays):
     if (plstd > 0):
         annSharpe = np.sqrt(249) * plmu / plstd
     return (plmu, ret, plstd, annSharpe, totDVolume)
-
 
 
 (meanpl, ret, plstd, sharpe, dvol) = calcPL(prcAll,200)
